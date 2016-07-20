@@ -6,3 +6,8 @@ To see the implementation of specific programming language, please checkout to t
 git checkout python
 ```
 
+## Requirements
+matplotlib
+> Some algorithm need the module matplotlib to plot the result. E.g. [context_hull/graham_scan.py][graham scan]
+
+[graham scan]: /convex_hull/graham_scan.py
