@@ -10,4 +10,10 @@ git checkout python
 matplotlib
 > Some algorithm need the module matplotlib to plot the result. E.g. [context_hull/graham_scan.py][graham scan]
 
+## Screenshots
+#### Convex Hull
+![Convex Hull Picture 1][convex hull picture 1]
+
+
 [graham scan]: /convex_hull/graham_scan.py
+[convex hull picture 1]: /screenshots/convex_hull_1.png
