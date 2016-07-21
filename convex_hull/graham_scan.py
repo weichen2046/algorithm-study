@@ -80,21 +80,27 @@ if __name__ == '__main__':
     from argparse import ArgumentParser
 
     parser = ArgumentParser(description='Compute convex hull using Graham\'s scan approach.')
-    parser.add_argument('random', type=int, help='max random point count')
+    group = parser.add_mutually_exclusive_group(required=True)
+    group.add_argument('--random', type=int, help='max random point count')
+    group.add_argument('--file', type=str, help='file from which points read ')
     parser.add_argument('--plot', action='store_true', help='plot convex hull using matplotlib')
 
     args = parser.parse_args()
 
-    # to avoid 'ValueError("sample larger than population")' when call
-    # random.sample().
-    r_end = 100
-    if args.random >= r_end:
-        r_end = args.random + 10
+    if args.random:
+        # to avoid 'ValueError("sample larger than population")' when call
+        # random.sample().
+        r_end = 100
+        if args.random >= r_end:
+            r_end = args.random + 10
 
-    x_axes = random.sample(xrange(1, r_end), args.random)
-    y_axes = random.sample(xrange(1, r_end), args.random)
+        x_axes = random.sample(xrange(1, r_end), args.random)
+        y_axes = random.sample(xrange(1, r_end), args.random)
+        points = zip(x_axes, y_axes)
+    else:
+        from helper import read_points
+        points = read_points(args.file)
 
-    points = zip(x_axes, y_axes)
     convex_hull = graham_scan(points)
 
     print 'origin points:\t', points
