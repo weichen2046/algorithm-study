@@ -10,6 +10,9 @@ git checkout python
 [matplotlib][matplotlib]
 > Some algorithm need the module matplotlib to plot the result. E.g. [context_hull/graham_scan.py][graham scan]
 
+[nose][nose]
+> Used for unit test. E.g. `nosetests -v test/`
+
 ## Screenshots
 #### Convex Hull
 ![Convex Hull Picture 1][convex hull picture 1]
@@ -22,4 +25,5 @@ git checkout python
 [convex hull picture 1]: /screenshots/convex_hull_1.png
 
 [matplotlib]: http://matplotlib.org/
+[nose]: http://nose.readthedocs.io/en/latest/
 [algorithm in a nutshell]: http://shop.oreilly.com/product/0636920032885.do
