@@ -34,8 +34,8 @@ def _insert_helper(array, pos, value, order):
 
 def sort(array, order='asc'):
     '''
-    In-place insertion sort algorithm in ascending order. In the following
-    circumstances you can choose this approach.
+    In-place sort array use insertion sort algorithm in ascending or descending
+    order. In the following circumstances you shoud consider this approach:
 
     * Only a few items to sort.
     * Items are mostely sorted already.
@@ -59,7 +59,7 @@ if __name__ == '__main__':
 
     import random
     from argparse import ArgumentParser
-    
+
     parser = ArgumentParser(description='Sort array use Insertion Sort algorithm.')
     parser.add_argument('random', type=int, help='max random number count')
     parser.add_argument('--order', type=str, default='asc', choices=['asc', 'desc'],
