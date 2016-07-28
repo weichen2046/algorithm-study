@@ -8,7 +8,20 @@ Best, Average: O(nlogn), Worst: O(n^2).
 '''
 
 
-def partion(array, left, right, pivot, order):
+def middle_pivot(array, left, right):
+    '''
+    Return the middle element between left and right bound as the pivot index.
+    '''
+
+    return left + (right - left) / 2
+
+
+def partion(array, left, right, order, select_pivot):
+
+    if not select_pivot:
+        select_pivot = middle_pivot
+
+    pivot = select_pivot(array, left, right)
 
     p = left
     pv = array[pivot]
@@ -33,24 +46,20 @@ def partion(array, left, right, pivot, order):
     return p
 
 
-def quick_sort(array, left, right, order):
+def quick_sort(array, left, right, order, select_pivot):
 
     if left >= right:
         return
 
-    # here we always use the middle index between left and right as the pivot,
-    # it is not always the best one of course.
-    pivot = left + (right - left) / 2
+    p = partion(array, left, right, order, select_pivot)
 
-    p = partion(array, left, right, pivot, order)
-
-    quick_sort(array, left, p - 1, order)
-    quick_sort(array, p + 1, right, order)
+    quick_sort(array, left, p - 1, order, select_pivot)
+    quick_sort(array, p + 1, right, order, select_pivot)
 
     return array
 
 
-def sort(array, order='asc'):
+def sort(array, order='asc', select_pivot=None):
     '''
     In-place sort array use quick sort algorithm in ascending or descending
     order.
@@ -63,7 +72,7 @@ def sort(array, order='asc'):
 
     n = len(array)
 
-    return quick_sort(array, 0, n - 1, order)
+    return quick_sort(array, 0, n - 1, order, select_pivot)
 
 
 if __name__ == '__main__':
