@@ -5,17 +5,19 @@ import os
 import unittest
 
 from helper.read_data_file import read_int_array
-from searching.sequential_search import search
+from searching.binary_search import search
+from sorting.quick_sort import sort
 
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
-class SequentialSearchTester(unittest.TestCase):
+class BinarySearchTester(unittest.TestCase):
 
     def setUp(self):
 
         self.collection = read_int_array(os.path.join(BASE_DIR, 'data1.data'))
+        self.collection = sort(self.collection)
 
     def test_search_exist(self):
 
