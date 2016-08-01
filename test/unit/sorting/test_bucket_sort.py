@@ -11,7 +11,7 @@ from sorting.bucket_sort import sort
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
-class InsertionSortTester(unittest.TestCase):
+class BucketSortTester(unittest.TestCase):
 
     # Test sort in default order, i.e., in ascending order.
     def test_sort_default(self):
