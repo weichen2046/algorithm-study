@@ -32,7 +32,7 @@ class ReadArrayTester(unittest.TestCase):
 
         try:
             import subprocess32 as subprocess
-        except:
+        except ImportError:
             import subprocess
 
         output = subprocess.check_output(['cat %s | wc -l' % WORDS_FILE],
