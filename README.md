@@ -24,7 +24,7 @@ git checkout python
 
 
 [graham scan]: /convex_hull/graham_scan.py
-[convex hull picture 1]: /screenshots/convex_hull_1.png
+[convex hull picture 1]: /res/screenshots/convex_hull_1.png
 
 [algorithm in a nutshell]: http://shop.oreilly.com/product/0636920032885.do
 [matplotlib]: http://matplotlib.org/
