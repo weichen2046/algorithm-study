@@ -4,7 +4,7 @@
 import os
 import unittest
 
-from helper.read_data_file import read_int_array
+from utils.read_data_file import read_int_array
 
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -30,7 +30,7 @@ class ReadIntArrayTester(unittest.TestCase):
     def test_read_int_array_3(self):
 
         expect = []
-        array = read_int_array(os.path.join(BASE_DIR, 'data3.data'))
+        array = read_int_array(os.path.join(BASE_DIR, 'empty_file.data'))
         self.assertEqual(expect, array)
 
     # Test data file which not exist.

@@ -6,27 +6,47 @@ Helper function for read data from file.
 '''
 
 
-def read_int_array(f_name):
+def read_array(f_name, max=None):
     '''
     Read data in the file named f_name. Each line of the input file contains
-    one number.
+    one element.
 
-    Return an int array.
+    Return a string array, max length of the array defined by parameter max. If
+    max is None, then return all read elements.
     '''
 
+    count = 0
     array = []
     try:
         with open(f_name) as f:
             line = f.readline()
             while(line):
+                if max and count >= max:
+                    break
+
                 line = line.strip()
                 if line:
-                    array.append(int(line))
+                    count += 1
+                    array.append(line)
+
                 line = f.readline()
     except IOError:
         pass
 
     return array
+
+
+def read_int_array(f_name, max=None):
+    '''
+    Read data in the file named f_name. Each line of the input file contains
+    one number.
+
+    Return an int array, max length of the array defined by parameter max. If
+    max is None, then return all read integers.    '''
+
+    array = read_array(f_name, max)
+
+    return [ int(e) for e in array ]
 
 
 def read_points(f_name):

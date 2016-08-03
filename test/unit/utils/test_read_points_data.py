@@ -4,7 +4,7 @@
 import os
 import unittest
 
-from helper.read_data_file import read_points
+from utils.read_data_file import read_points
 
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))

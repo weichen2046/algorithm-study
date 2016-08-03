@@ -4,7 +4,7 @@
 import os
 import unittest
 
-from helper.read_data_file import read_int_array
+from utils.read_data_file import read_int_array
 from sorting.merge_sort import sort
 
 
