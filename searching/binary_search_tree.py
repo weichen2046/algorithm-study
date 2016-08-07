@@ -29,6 +29,24 @@ class BinaryNode:
             else:
                 self.right.add(value)
 
+    def in_order(self, order):
+        if order == 'asc':
+            start = self.left
+            end = self.right
+        else:
+            start = self.right
+            end = self.left
+
+        if start:
+            for n in start.in_order(order):
+                yield n
+
+        yield self.value
+
+        if end:
+            for n in end.in_order(order):
+                yield n
+
 
 class BinarySearchTree:
 
@@ -56,3 +74,13 @@ class BinarySearchTree:
             else:
                 node = node.right
         return False
+
+    def in_order(self, order='asc'):
+        if order not in ['asc', 'desc']:
+            raise ValueError('parameter order should be "asc" or "desc"')
+
+        if not self.root:
+            return
+
+        for n in self.root.in_order(order):
+            yield n
