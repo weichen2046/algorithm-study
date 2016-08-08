@@ -47,6 +47,33 @@ class BinaryNode:
             for n in end.in_order(order):
                 yield n
 
+    def _remove_from_parent(self, parent, value):
+        if parent:
+            return parent.remove(value)
+
+        return None
+
+    def remove(self, value):
+        if value == self.value:
+            if not self.left:
+                return self.right
+
+            child = self.left
+            while child.right:
+                child = child.right
+
+            child_v = child.value
+            self.left = self._remove_from_parent(self.left, child_v)
+            self.value = child_v
+
+        elif value < self.value:
+            self.left = self._remove_from_parent(self.left, value)
+
+        else:
+            self.right = self._remove_from_parent(self.right, value)
+
+        return self
+
 
 class BinarySearchTree:
 
@@ -84,3 +111,7 @@ class BinarySearchTree:
 
         for n in self.root.in_order(order):
             yield n
+
+    def remove(self, value):
+        if self.root:
+            self.root = self.root.remove(value)

@@ -66,6 +66,39 @@ class BinarySearchTreeTester(unittest.TestCase):
             ordered = [n for n in self.bst.in_order('test')]
             self.assertEqual(ordered, [])
 
+    def test_remove(self):
+        nums = read_int_array(DATA_FILE)
+        for v in nums:
+            self.bst.add(v)
+
+        self.bst.remove(76)
+        ordered = [n for n in self.bst.in_order()]
+        expect = [65, 86, 113, 140, 417, 444, 445, 567, 589, 637, 647, 702, 864, 969]
+        self.assertEqual(ordered, expect)
+
+        self.bst.remove(65)
+        ordered = [n for n in self.bst.in_order()]
+        expect = [86, 113, 140, 417, 444, 445, 567, 589, 637, 647, 702, 864, 969]
+        self.assertEqual(ordered, expect)
+
+        self.bst.remove(969)
+        ordered = [n for n in self.bst.in_order()]
+        expect = [86, 113, 140, 417, 444, 445, 567, 589, 637, 647, 702, 864]
+        self.assertEqual(ordered, expect)
+
+        self.bst.remove(702)
+        ordered = [n for n in self.bst.in_order()]
+        expect = [86, 113, 140, 417, 444, 445, 567, 589, 637, 647, 864]
+        self.assertEqual(ordered, expect)
+
+        self.bst.remove(417)
+        self.bst.remove(567)
+        self.bst.remove(445)
+        self.bst.remove(444)
+        ordered = [n for n in self.bst.in_order()]
+        expect = [86, 113, 140, 589, 637, 647, 864]
+        self.assertEqual(ordered, expect)
+
 
 if __name__ == '__main__':
 
