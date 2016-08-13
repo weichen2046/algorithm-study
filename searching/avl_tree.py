@@ -33,12 +33,6 @@ class BinaryNode:
 
         return left_h - right_h
 
-    def _add_to_parent(self, parent, value):
-        if not parent:
-            return BinaryNode(value)
-
-        return parent.add(value)
-
     def _rotate_right(self):
         new_root = self.left
         self.left = new_root.right
@@ -75,6 +69,18 @@ class BinaryNode:
         self._calc_height()
         return new_root
 
+    def _add_to_parent(self, parent, value):
+        if not parent:
+            return BinaryNode(value)
+
+        return parent.add(value)
+
+    def _remove_from_parent(self, parent, value):
+        if parent:
+            return parent.remove(value)
+
+        return None
+
     def add(self, value):
         new_root = self
 
@@ -95,6 +101,48 @@ class BinaryNode:
 
                 else:
                     new_root = self._rotate_left()
+
+        new_root._calc_height()
+        return new_root
+
+    def remove(self, value):
+        new_root = self
+        if value == self.value:
+            if not self.left:
+                return self.right
+
+            child = self.left
+            while child.right:
+                child = child.right
+
+            child_v = child.value
+            self.left = self._remove_from_parent(self.left, child_v)
+            self.value = child_v
+
+            if self._height_difference() == -2:
+                if self.right._height_difference() <= 0:
+                    new_root = self._rotate_left()
+
+                else:
+                    new_root = self._rotate_right_left()
+
+        elif value < self.value:
+            self.left = self._remove_from_parent(self.left, value)
+            if self._height_difference() == -2:
+                if self.right._height_difference() <= 0:
+                    new_root = self._rotate_left()
+
+                else:
+                    new_root = self._rotate_right_left()
+
+        else:
+            self.right = self._remove_from_parent(self.right, value)
+            if self._height_difference() == 2:
+                if self.left._height_difference() >= 0:
+                    new_root = self._rotate_right()
+
+                else:
+                    new_root = self._rotate_left_right()
 
         new_root._calc_height()
         return new_root
@@ -130,6 +178,10 @@ class AVLTree:
         else:
             self.root = self.root.add(value)
         self.size += 1
+
+    def remove(self, value):
+        if self.root:
+            self.root = self.root.remove(value)
 
     def __len__(self):
         return self.size
