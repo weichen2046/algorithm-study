@@ -28,6 +28,8 @@ git checkout python
 > 
 > pip install pygraphviz --install-option="--include-path=/usr/include/graphviz" --install-option="--library-path=/usr/lib/graphviz/"
 
+[python-tk][python-tk]
+> `sudo apt-get install python-tk`
 
 ## Screenshots
 #### Convex Hull
@@ -51,3 +53,4 @@ git checkout python
 [subprocess32]: https://github.com/google/python-subprocess32/
 [graphviz]: http://www.graphviz.org/
 [pygraphviz]: https://pygraphviz.github.io/
+[python-tk]: https://docs.python.org/2/library/tkinter.html
