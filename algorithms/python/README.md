@@ -36,10 +36,10 @@
 [George T. Heineman, Gary Pollice and Stanley Selkow's Algorithms in a Nutshell, 2nd Edition][algorithm in a nutshell]
 
 
-[graham scan]: /convex_hull/graham_scan.py
+[graham scan]: ./convex_hull/graham_scan.py
 
-[avl tree picture 1]: /res/screenshots/avl_tree_graph.png
-[convex hull picture 1]: /res/screenshots/convex_hull_1.png
+[avl tree picture 1]: ./res/screenshots/avl_tree_graph.png
+[convex hull picture 1]: ./res/screenshots/convex_hull_1.png
 
 [algorithm in a nutshell]: http://shop.oreilly.com/product/0636920032885.do
 [matplotlib]: http://matplotlib.org/
